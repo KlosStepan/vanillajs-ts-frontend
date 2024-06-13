@@ -8,10 +8,30 @@
 </head>
 
 <body>
-    <div id="app"></div>
-    <div id="content"></div>
+    <div>
+        <span id="welcome"></span>
+    </div>
+    <div>
+        <span id="calculation"></span>
+    </div>
+    <div>
+        <hr />
+    </div>
+    <div>
+        <h2>Text to read</h2>
+        <p id="text-field">Tyhle hodinky byly dárek k narozeninám.</p>
+        <button id="synthesize-btn">Synthesize Text</button>
+    </div>
+    <div>
+        <h2>Speech Recognition</h2>
+        <button id="recognize-btn">Start Recognition</button>
+        <button id="stop-recognition-btn">Stop Recognition</button>
+        <p id="recognized-text"></p>
+    </div>
+    <!-- Scripts here -->
     <script src="./dist/index.js"></script>
     <script src="./dist/functions.js"></script>
+    <script src="./dist/WebSpeechAPI.js"></script>
 </body>
 
 </html>

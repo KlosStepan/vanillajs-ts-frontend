@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/dom-speech-recognition": "^0.0.4",
     "lite-server": "^2.6.1",
     "tsc-watch": "^6.2.0",
     "typescript": "^5.4.5"

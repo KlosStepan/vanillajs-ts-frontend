@@ -1,4 +1,4 @@
-const content = document.getElementById('content');
+const content = document.getElementById('calculation');
 
 function add(x: number, y: number): void {
     const result: number = x + y;

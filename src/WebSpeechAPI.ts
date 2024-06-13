@@ -1,6 +1,7 @@
 // WebSpeechAPI.ts
 
 let recognition: SpeechRecognition | null = null;
+let lastResult: SpeechRecognitionResult | null = null;
 
 // Function to synthesize speech from text
 function Synth(): void {
@@ -20,13 +21,35 @@ function Recognize(): void {
         recognition.maxAlternatives = 1;
 
         recognition.onresult = (event) => {
+            console.log("onresult triggered");
+            console.log(event);
             const transcript = event.results[0][0].transcript;
+            console.log(transcript);
             const recognizedText = document.getElementById('recognized-text') as HTMLParagraphElement;
+            console.log(recognizedText);
             recognizedText.innerText = transcript;
+
+            lastResult = event.results[0]; // Store the last result
         };
 
         recognition.onerror = (event) => {
             console.error('Speech recognition error:', event.error);
+        };
+
+        recognition.onspeechend = () => {
+            console.log('Speech has stopped being detected.');
+            recognition!.stop();
+        };
+
+        recognition.onend = () => {
+            console.log('Recognition service disconnected.');
+            if (lastResult) {
+                // Ensure the last recognized text is displayed
+                const transcript = lastResult[0].transcript;
+                const recognizedText = document.getElementById('recognized-text') as HTMLParagraphElement;
+                recognizedText.innerText = transcript;
+            }
+            recognition = null;
         };
     }
 
